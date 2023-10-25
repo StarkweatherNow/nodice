@@ -1,8 +1,8 @@
 package ninja.starkweather.nodice;
 
-public class DiceIDMismatchException extends RuntimeException {
+public class DiceIdMismatchException extends RuntimeException {
 
-    public DiceIDMismatchException(String message, Throwable cause) {
+    public DiceIdMismatchException(String message, Throwable cause) {
         super(message, cause);
     }
     

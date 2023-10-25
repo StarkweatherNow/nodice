@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
 
 import ninja.starkweather.nodice.DiceNotFoundException;
+import ninja.starkweather.nodice.DiceIdMismatchException;
 
 @RestController
 @RequestMapping("/api/dice")
@@ -30,18 +32,6 @@ public class diceController {
         .orElseThrow(DiceNotFoundException::new);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public dice createDice(@RequestBody dice dice) {
-        return diceRepository.save(dice);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteDice(@PathVariable Long id) {
-        diceRepository.findById(id)
-        .orElseThrow(DiceNotFoundException::new);
-        diceRepository.deleteById(id);
-    }
 
     @PutMapping("/{id}")
     public dice updateDice(@RequestBody dice dice, @PathVariable Long id) {
