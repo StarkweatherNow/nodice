@@ -22,24 +22,24 @@ public class diceController {
     private diceRepository diceRepository;
 
     @GetMapping
-    public Iterable<dice> getDice() {
+    public Iterable<dice> findAll() {
         return diceRepository.findAll();
     }
 
     @GetMapping("/{id}")
     public dice getDiceById(@PathVariable Long id) {
         return diceRepository.findById(id)
-        .orElseThrow(DiceNotFoundException::new);
+        .orElseThrow(() -> new DiceNotFoundException());
     }
 
 
     @PutMapping("/{id}")
     public dice updateDice(@RequestBody dice dice, @PathVariable Long id) {
-        if (dice.getId() != id) {
-            throw new DiceIdMismatchException();
+        if (!dice.getId().equals(id)) {
+            throw new DiceIdMismatchException("Dice ID does not match!");
         }
         diceRepository.findById(id)
-        .orElseThrow(DiceNotFoundException::new);
+        .orElseThrow(() -> new DiceNotFoundException());
         return diceRepository.save(dice);
     }
 }
