@@ -1,28 +1,21 @@
 package ninja.starkweather.nodice.dice;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class dice {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(nullable = false)
     private int sides;
+
+    @Column(nullable = false)
     private int value;
-
-    public dice(int sides) {
-        this.sides = sides;
-        this.value = 0;
-    }
-
-    public int roll() {
-        this.value = (int) (Math.random() * this.sides) + 1;
-        return this.value;
-    }
-
-    public int getValue() {
-        return this.value;
-    }
-
-    public int getSides() {
-        return this.sides;
-    }
-
-    public void setSides(int sides) {
-        this.sides = sides;
-    }
 }
