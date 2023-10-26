@@ -18,6 +18,13 @@ import ninja.starkweather.nodice.DiceIdMismatchException;
 @RestController
 @RequestMapping("/api/dice")
 public class diceController {
+    
+    public class DiceNotFoundException extends RuntimeException {
+        public DiceNotFoundException(String message) {
+            super(message);
+        }
+    }
+    
     @Autowired
     private diceRepository diceRepository;
 
@@ -29,17 +36,16 @@ public class diceController {
     @GetMapping("/{id}")
     public dice getDiceById(@PathVariable Long id) {
         return diceRepository.findById(id)
-        .orElseThrow(() -> new DiceNotFoundException());
+        .orElseThrow(() -> new DiceNotFoundException("Dice not found with id: " + id));
     }
-
-
+    
     @PutMapping("/{id}")
     public dice updateDice(@RequestBody dice dice, @PathVariable Long id) {
         if (!dice.getId().equals(id)) {
-            throw new DiceIdMismatchException("Dice ID does not match!");
+            throw new RuntimeException("Dice ID does not match!");
         }
         diceRepository.findById(id)
-        .orElseThrow(() -> new DiceNotFoundException());
+                .orElseThrow(() -> new DiceNotFoundException("Dice not found with id: " + id));
         return diceRepository.save(dice);
     }
 }
