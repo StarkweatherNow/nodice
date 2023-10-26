@@ -1,17 +1,14 @@
 package ninja.starkweather.nodice;
 
-import org.h2.constraint.Constraint;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.reactive.result.method.annotation.ResponseEntityExceptionHandler;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import ninja.starkweather.nodice.dice.DiceIdMismatchException;
 import ninja.starkweather.nodice.dice.DiceNotFoundException;

@@ -1,14 +1,21 @@
 package ninja.starkweather.nodice;
 
-import org.junit.Test;
-import org.springframework.boot.actuate.web.exchanges.HttpExchange.Response;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.HttpStatus;
-import ninja.starkweather.nodice.dice.DiceNotFoundException;
-import ninja.starkweather.nodice.dice.DiceIdMismatchException;
-import ninja.starkweather.nodice.dice.dice;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+
+import ninja.starkweather.nodice.dice.dice;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
 
 public class SpringBootBootstrapLiveTest {
 
