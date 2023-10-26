@@ -11,16 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
+import ninja.starkweather.nodice.dice.DiceNotFoundException;
+import ninja.starkweather.nodice.dice.DiceIdMismatchException;
 
 @RestController
 @RequestMapping("/api/dice")
 public class diceController {
-    
-    public class DiceNotFoundException extends RuntimeException {
-        public DiceNotFoundException(String message) {
-            super(message);
-        }
-    }
     
     @Autowired
     private diceRepository diceRepository;
@@ -33,16 +29,29 @@ public class diceController {
     @GetMapping("/{id}")
     public dice getDiceById(@PathVariable Long id) {
         return diceRepository.findById(id)
-        .orElseThrow(() -> new DiceNotFoundException("Dice not found with id: " + id));
+        .orElseThrow(DiceNotFoundException::new);
     }
     
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public dice create(@RequestBody dice dice) {
+        return diceRepository.save(dice);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        diceRepository.findById(id)
+          .orElseThrow(DiceNotFoundException::new);
+        diceRepository.deleteById(id);
+    }
+
     @PutMapping("/{id}")
-    public dice updateDice(@RequestBody dice dice, @PathVariable Long id) {
-        if (!dice.getId().equals(id)) {
-            throw new RuntimeException("Dice ID does not match!");
+    public dice updateBook(@RequestBody dice dice, @PathVariable Long id) {
+        if (dice.getId() != id) {
+          throw new DiceIdMismatchException();
         }
         diceRepository.findById(id)
-                .orElseThrow(() -> new DiceNotFoundException("Dice not found with id: " + id));
+          .orElseThrow(DiceNotFoundException::new);
         return diceRepository.save(dice);
     }
 }

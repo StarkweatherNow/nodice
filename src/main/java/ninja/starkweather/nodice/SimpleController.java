@@ -15,4 +15,16 @@ public class SimpleController {
         model.addAttribute("appName", appName);
         return "index";
     }
+
+    @GetMapping("/dice")
+    public String dicePage(Model model) {
+        model.addAttribute("appName", appName);
+        return "dice";
+    }
+
+    @GetMapping("/roll")
+    public String rollPage(Model model) {
+        model.addAttribute("appName", appName);
+        return "roll";
+    }
 }
