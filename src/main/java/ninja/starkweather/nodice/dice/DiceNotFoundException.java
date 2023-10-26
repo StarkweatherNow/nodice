@@ -1,4 +1,4 @@
-package ninja.starkweather.nodice;
+package ninja.starkweather.nodice.dice;
 
 public class DiceNotFoundException extends RuntimeException {
 

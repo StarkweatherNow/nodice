@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.reactive.result.method.annotation.ResponseEntityExceptionHandler;
-import ninja.starkweather.nodice.DiceNotFoundException;
-import ninja.starkweather.nodice.DiceIdMismatchException;
+
+import ninja.starkweather.nodice.dice.DiceIdMismatchException;
+import ninja.starkweather.nodice.dice.DiceNotFoundException;
 
 
 @ControllerAdvice

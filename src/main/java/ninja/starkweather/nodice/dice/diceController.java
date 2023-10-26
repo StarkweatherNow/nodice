@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
-import ninja.starkweather.nodice.DiceNotFoundException;
-import ninja.starkweather.nodice.DiceIdMismatchException;
-
 @RestController
 @RequestMapping("/api/dice")
 public class diceController {
