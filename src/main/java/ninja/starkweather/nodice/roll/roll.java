@@ -24,8 +24,7 @@ public class roll {
     @Column(nullable = false)
     private int value;
 
-    //Foreign key from Dice
     @Column(nullable = false)
-    private int diceId;
+    private int rolls;
 
 }

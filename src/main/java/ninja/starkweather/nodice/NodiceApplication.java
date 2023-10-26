@@ -5,8 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaRepositories("ninja.starkweather.nodice.dice")
-@EntityScan("ninja.starkweather.nodice.dice")
+//Repository Search
+@EnableJpaRepositories("ninja.starkweather.nodice")
+@EntityScan("ninja.starkweather.nodice")
+
 @SpringBootApplication
 public class NodiceApplication {
 
