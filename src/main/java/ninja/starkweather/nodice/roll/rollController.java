@@ -34,7 +34,7 @@ public class rollController {
 
     @GetMapping("/{id}")
     public roll findOne(@PathVariable long id) {
-        return rollRepository.findByRoll_id(id)
+        return rollRepository.findById(id)
           .orElseThrow(RollNotFoundException::new);
     }
 
