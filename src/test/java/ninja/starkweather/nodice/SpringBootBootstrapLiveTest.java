@@ -22,9 +22,22 @@ public class SpringBootBootstrapLiveTest {
     private static final String API_ROOT
       = "http://localhost:8081/api/dice";
 
+    
+    
+    @Test
+    public void whenGetAllDice_thenOK() {
+    Response response = RestAssured.get(API_ROOT);
+ 
+    assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+    }
+
+    //@Test
+
+
+    //
     private dice createRandomDice() {
-        dice dice = new dice();
-        dice.setColor(randomAlphabetic(10));
+        final dice dice = new dice();
+        dice.setSides(randomNumeric(10));
         return dice;
     }
 
@@ -35,11 +48,5 @@ public class SpringBootBootstrapLiveTest {
           .post(API_ROOT);
         return API_ROOT + "/" + response.jsonPath().get("id");
     }
-    
-    @Test
-    public void whenGetAllBooks_thenOK() {
-    Response response = RestAssured.get(API_ROOT);
- 
-    assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-}
+
 }

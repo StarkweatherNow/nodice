@@ -12,8 +12,18 @@ public class roll {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(long id){
+        this.id = id;
+    }
+
     @Column(nullable = false)
     private int times;
+
+
 
     @Column(nullable = false)
     private int sides;
@@ -26,5 +36,13 @@ public class roll {
 
     @Column(nullable = false)
     private int rolls;
+
+    public int getRoll(){
+        return rolls;
+    }
+
+    public void setRoll(int rolls){
+        this.rolls = rolls;
+    }
 
 }
