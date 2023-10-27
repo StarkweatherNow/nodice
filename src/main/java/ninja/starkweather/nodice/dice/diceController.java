@@ -33,9 +33,9 @@ public class diceController {
     }
 
     @GetMapping("/{id}")
-    public dice getDiceById(@PathVariable Long id) {
+    public dice findOne(@PathVariable long id) {
         return diceRepository.findById(id)
-        .orElseThrow(DiceNotFoundException::new);
+          .orElseThrow(DiceNotFoundException::new);
     }
     
     @PostMapping
