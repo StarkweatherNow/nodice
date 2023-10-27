@@ -21,8 +21,7 @@ public class SpringBootBootstrapLiveTest {
 
     private static final String API_ROOT
       = "http://localhost:8081/api/dice";
-
-    
+   
     
     @Test
     public void whenGetAllDice_thenOK() {
@@ -31,14 +30,41 @@ public class SpringBootBootstrapLiveTest {
     assertEquals(HttpStatus.OK.value(), response.getStatusCode());
     }
 
-    //@Test
+    @Test
+    public void whenGetDiceByName_thenOK() {
+      final dice dice = createRandomDice();
+      createDiceAsUri(dice);
 
+      final Response response = RestAssured.get(API_ROOT + "/name/" + dice.getName());
+      assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+      assertTrue(response.as(List.class)
+          .size() > 0);
+    }
+
+    @Test
+    public void whenGetCreatedDiceById_thenOK() {
+        final dice dice = createRandomDice();
+        final String location = createDiceAsUri(dice);
+
+        final Response response = RestAssured.get(location);
+        assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+        assertEquals(dice.getName(), response.jsonPath()
+            .get("name"));
+    }
 
     //
     private dice createRandomDice() {
-        final dice dice = new dice();
-        dice.setSides(randomNumeric(10));
-        return dice;
+      final dice dice = new dice();
+      dice.setSides(Integer.parseInt(randomNumeric(10)));
+      dice.setValue(Integer.parseInt(randomNumeric(10)));
+      dice.setName(randomAlphabetic(10));
+      dice.setBorder(randomAlphabetic(10));
+      dice.setFont(randomAlphabetic(10));
+      dice.setTexture(randomAlphabetic(10));
+      dice.setBorderColor(Integer.parseInt(randomNumeric(10)));
+      dice.setFontColor(Integer.parseInt(randomNumeric(10)));
+      dice.setBackgroundColor(Integer.parseInt(randomNumeric(10)));
+      return dice;
     }
 
     private String createDiceAsUri(dice dice) {

@@ -32,13 +32,13 @@ public class dice {
     private String texture;
 
     @Column(nullable = false)
-    private String borderColor;
+    private int borderColor;
 
     @Column(nullable = false)
-    private String fontColor; 
+    private int fontColor; 
 
     @Column(nullable = false)
-    private String backgroundColor;
+    private int backgroundColor;
 
     public Long getId() {
         return id;
@@ -96,27 +96,27 @@ public class dice {
         this.texture = texture;
     }
 
-    public String getBorderColor() {
+    public int getBorderColor() {
         return borderColor;
     }
 
-    public void setBorderColor(String borderColor) {
+    public void setBorderColor(int borderColor) {
         this.borderColor = borderColor;
     }
 
-    public String getFontColor() {
+    public int getFontColor() {
         return fontColor;
     }
 
-    public void setFontColor(String fontColor) {
+    public void setFontColor(int fontColor) {
         this.fontColor = fontColor;
     }
 
-    public String getBackgroundColor() {
+    public int getBackgroundColor() {
         return backgroundColor;
     }
 
-    public void setBackgroundColor(String backgroundColor) {
+    public void setBackgroundColor(int backgroundColor) {
         this.backgroundColor = backgroundColor;
     }
 
