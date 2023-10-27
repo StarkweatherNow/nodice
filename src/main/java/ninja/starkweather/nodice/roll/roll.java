@@ -11,6 +11,9 @@ public class roll {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long roll_id;
+    
+    @Column(nullable = false, unique = true)
+    private String roll_name;
 
     @Column(nullable = false)
     private int roll_times;
@@ -31,8 +34,8 @@ public class roll {
         return roll_id;
     }
 
-    public void setId(long id){
-        this.roll_id = id;
+    public void setId(long roll_id){
+        this.roll_id = roll_id;
     }
 
     public int getTimes(){
