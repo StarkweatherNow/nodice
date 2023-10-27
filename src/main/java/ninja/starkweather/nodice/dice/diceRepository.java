@@ -4,5 +4,5 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface diceRepository extends CrudRepository<dice, Long>{
-    List<dice> findBySides(int sides);
+    List<dice> findByID(Long dice_id);
 }

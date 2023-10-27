@@ -52,18 +52,81 @@ public class SpringBootBootstrapLiveTest {
             .get("name"));
     }
 
-    //
+    @Test
+    public void whenGetNotExistDiceById_thenNotFound() {
+        final Response response = RestAssured.get(API_ROOT + "/" + randomNumeric(4));
+        assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
+    }
+
+    // POST
+    @Test
+    public void whenCreateNewDice_thenCreated() {
+        final dice dice = createRandomDice();
+
+        final Response response = RestAssured.given()
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .body(dice)
+            .post(API_ROOT);
+        assertEquals(HttpStatus.CREATED.value(), response.getStatusCode());
+    }
+
+    @Test
+    public void whenInvalidDice_thenError() {
+        final dice dice = createRandomDice();
+        dice.setName(null);
+
+        final Response response = RestAssured.given()
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .body(dice)
+            .post(API_ROOT);
+        assertEquals(HttpStatus.BAD_REQUEST.value(), response.getStatusCode());
+    }
+
+    @Test
+    public void whenUpdateCreatedDice_thenUpdated() {
+        final dice dice = createRandomDice();
+        final String location = createDiceAsUri(dice);
+
+        dice.setId(Long.parseLong(location.split("api/dice/")[1]));
+        dice.setName("newName");
+        Response response = RestAssured.given()
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .body(dice)
+            .put(location);
+        assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+
+        response = RestAssured.get(location);
+        assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+        assertEquals("newName", response.jsonPath()
+            .get("name"));
+
+    }
+
+    @Test
+    public void whenDeleteCreatedDice_thenOk() {
+        final dice dice = createRandomDice();
+        final String location = createDiceAsUri(dice);
+
+        Response response = RestAssured.delete(location);
+        assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+
+        response = RestAssured.get(location);
+        assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
+    }
+
+    // ===============================
+
     private dice createRandomDice() {
       final dice dice = new dice();
-      dice.setSides(Integer.parseInt(randomNumeric(10)));
-      dice.setValue(Integer.parseInt(randomNumeric(10)));
+      dice.setSides(Integer.parseInt(randomNumeric(2)));
+      dice.setValue(Integer.parseInt(randomNumeric(3)));
       dice.setName(randomAlphabetic(10));
       dice.setBorder(randomAlphabetic(10));
       dice.setFont(randomAlphabetic(10));
       dice.setTexture(randomAlphabetic(10));
-      dice.setBorderColor(Integer.parseInt(randomNumeric(10)));
-      dice.setFontColor(Integer.parseInt(randomNumeric(10)));
-      dice.setBackgroundColor(Integer.parseInt(randomNumeric(10)));
+      dice.setBorderColor(Integer.parseInt(randomNumeric(6)));
+      dice.setFontColor(Integer.parseInt(randomNumeric(6)));
+      dice.setBackgroundColor(Integer.parseInt(randomNumeric(6)));
       return dice;
     }
 

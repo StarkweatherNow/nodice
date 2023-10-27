@@ -11,113 +11,113 @@ public class dice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long dice_id;
 
     @Column(nullable = false)
-    private int sides;
+    private int dice_sides;
 
     @Column(nullable = false)
-    private int value;
+    private int dice_value;
 
     @Column(nullable = false)
-    private String name;
+    private String dice_name;
 
     @Column(nullable = false)
-    private String border;
+    private String dice_border;
 
     @Column(nullable = false)
-    private String font;    
+    private String dice_font;    
 
     @Column(nullable = false)
-    private String texture;
+    private String dice_texture;
 
     @Column(nullable = false)
-    private int borderColor;
+    private int dice_borderColor;
 
     @Column(nullable = false)
-    private int fontColor; 
+    private int dice_fontColor; 
 
     @Column(nullable = false)
-    private int backgroundColor;
+    private int dice_backgroundColor;
 
     public Long getId() {
-        return id;
+        return dice_id;
     }
 
     public void setId(Long id){
-        this.id = id;
+        this.dice_id = id;
     }
 
     public int getSides() {
-        return sides;
+        return dice_sides;
     }
 
     public void setSides(int sides) {
-        this.sides = sides;
+        this.dice_sides = sides;
     }
 
     public int getValue() {
-        return value;
+        return dice_value;
     }
 
     public void setValue(int value) {
-        this.value = value;
+        this.dice_value = value;
     }
 
     public String getName() {
-        return name;
+        return dice_name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.dice_name = name;
     }
 
     public String getBorder() {
-        return border;
+        return dice_border;
     }
 
     public void setBorder(String border) {
-        this.border = border;
+        this.dice_border = border;
     }
 
     public String getFont() {
-        return font;
+        return dice_font;
     }
 
     public void setFont(String font) {
-        this.font = font;
+        this.dice_font = font;
     }
 
     public String getTexture() {
-        return texture;
+        return dice_texture;
     }
 
     public void setTexture(String texture) {
-        this.texture = texture;
+        this.dice_texture = texture;
     }
 
     public int getBorderColor() {
-        return borderColor;
+        return dice_borderColor;
     }
 
     public void setBorderColor(int borderColor) {
-        this.borderColor = borderColor;
+        this.dice_borderColor = borderColor;
     }
 
     public int getFontColor() {
-        return fontColor;
+        return dice_fontColor;
     }
 
     public void setFontColor(int fontColor) {
-        this.fontColor = fontColor;
+        this.dice_fontColor = fontColor;
     }
 
     public int getBackgroundColor() {
-        return backgroundColor;
+        return dice_backgroundColor;
     }
 
     public void setBackgroundColor(int backgroundColor) {
-        this.backgroundColor = backgroundColor;
+        this.dice_backgroundColor = backgroundColor;
     }
 
 }
