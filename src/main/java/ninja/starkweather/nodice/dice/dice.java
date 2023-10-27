@@ -11,7 +11,7 @@ public class dice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long dice_id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String dice_name;
@@ -41,11 +41,11 @@ public class dice {
     private int dice_backgroundColor;
 
     public Long getId() {
-        return dice_id;
+        return id;
     }
 
-    public void setId(Long dice_id){
-        this.dice_id = dice_id;
+    public void setId(Long id){
+        this.id = id;
     }
 
     public int getSides() {

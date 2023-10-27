@@ -19,6 +19,7 @@ import ninja.starkweather.nodice.dice.DiceIdMismatchException;
 import ninja.starkweather.nodice.dice.DiceNotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/dice")
