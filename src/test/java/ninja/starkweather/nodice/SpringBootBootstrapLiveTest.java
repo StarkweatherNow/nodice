@@ -87,7 +87,7 @@ public class SpringBootBootstrapLiveTest {
         final dice dice = createRandomDice();
         final String location = createDiceAsUri(dice);
 
-        dice.setId(Long.parseLong(location.split("api/dice/")[1]));
+        dice.setDiceId(Long.parseLong(location.split("api/dice/")[1]));
         dice.setName("newName");
         Response response = RestAssured.given()
             .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -135,7 +135,7 @@ public class SpringBootBootstrapLiveTest {
           .contentType(MediaType.APPLICATION_JSON_VALUE)
           .body(dice)
           .post(API_ROOT);
-        return API_ROOT + "/" + response.jsonPath().get("id");
+        return API_ROOT + "/" + response.jsonPath().get("diceId");
     }
 
 }
