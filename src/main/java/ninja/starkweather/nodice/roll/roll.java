@@ -10,40 +10,40 @@ import jakarta.persistence.Id;
 public class roll {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long roll_id;
+    private Long rollId;
     
     @Column(nullable = false, unique = true)
-    private String roll_name;
+    private String rollName;
 
     @Column(nullable = false)
-    private int roll_times;
+    private int rollTimes;
 
     @Column(nullable = false)
-    private int roll_sides;
+    private int rollSides;
 
     @Column(nullable = false)
-    private int roll_modifier;
+    private int rollModifier;
 
     @Column(nullable = false)
-    private int roll_value;
+    private int rollValue;
 
     @Column(nullable = false)
-    private int roll_multiplier;
+    private int rollMultiplier;
 
     public Long getId() {
-        return roll_id;
+        return rollId;
     }
 
-    public void setId(long roll_id){
-        this.roll_id = roll_id;
+    public void setId(long rollId){
+        this.rollId = rollId;
     }
 
     public int getTimes(){
-        return roll_times;
+        return rollTimes;
     }
 
-    public void setTimes(int roll_times){
-        this.roll_times = roll_times;
+    public void setTimes(int rollTimes){
+        this.rollTimes = rollTimes;
     }
 
 }

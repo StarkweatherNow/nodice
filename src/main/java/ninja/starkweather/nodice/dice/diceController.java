@@ -54,7 +54,7 @@ public class diceController {
 
     @PutMapping("/{id}")
     public dice updateBook(@RequestBody dice dice, @PathVariable Long id) {
-        if (dice.getId() != id) {
+        if (dice.getDiceId() != id) {
           throw new DiceIdMismatchException();
         }
         diceRepository.findById(id)
