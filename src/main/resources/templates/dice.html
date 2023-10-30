@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" data-bs-theme="light" lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -29,15 +28,20 @@
     </nav>
     <section class="text-white py-4 py-xl-5">
         <div class="container">
-            <div class="border rounded border-0 d-flex flex-column justify-content-center align-items-center p-4 py-5" style="background: linear-gradient(rgba(0,123,255,0.76) 12%, rgba(0,123,255,0.2) 100%), url(&quot;static/img/image-2.jpg&quot;) no-repeat;height: 500px;background-size: auto, cover;">
-                <div class="row">
-                    <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
-                        <div>
-                            <h1 class="text-uppercase fw-bold mb-3" style="color: var(--bs-dark);">Did you leave your dice at home? It might have been on purpose.</h1>
-                            <p class="mb-4">Enjoy this fully customizable Dice Rolling Simulator for free! Designed specifically for table top gaming.</p><button class="btn btn-primary fs-5 me-2 py-2 px-4" type="button">Dice</button><button class="btn btn-light fs-5 py-2 px-4" type="button">Roll</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="col">
+                <!--HTML form to request user input for Java Dice class-->
+                <h1>Create Dice:</h1>
+                <form action="#" th:action="@{/api/dice/create}" th:object="${dice}" method="post">
+                    <p>Name: <input type="text" th:field="*{name}" /></p>
+                    <p>Sides: <input type="text" th:field="*{sides}" /></p>
+                    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+                </form>                                
+            </div>
+            <div>
+                <!--HTML to display Java Dice class results-->
+                <h1>Your Dice:</h1>
+                <p th:text="'id: ' + ${dice.id}" />
+                <p th:text="'name: ' + ${dice.name}" />
             </div>
         </div>
     </section>

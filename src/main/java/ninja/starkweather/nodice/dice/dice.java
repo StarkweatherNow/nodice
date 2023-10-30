@@ -44,8 +44,8 @@ public class dice {
         return diceId;
     }
 
-    public void setDiceId(Long diceId){
-        this.diceId = diceId;
+    public void setDiceId(int i){
+        this.diceId = i;
     }
 
     public int getSides() {
@@ -119,5 +119,20 @@ public class dice {
     public void setBackgroundColor(int diceBackgroundColor) {
         this.diceBackgroundColor = diceBackgroundColor;
     }
+
+    public void createNewDice(){
+        dice newDice = new dice();
+        newDice.setDiceId(1);
+        newDice.setName("d6");
+        newDice.setSides(6);
+        newDice.setValue(1);
+        newDice.setBorder("solid");
+        newDice.setFont("arial");
+        newDice.setTexture("none");
+        newDice.setBorderColor(0);
+        newDice.setFontColor(0);
+        newDice.setBackgroundColor(0);
+    }
+
 
 }

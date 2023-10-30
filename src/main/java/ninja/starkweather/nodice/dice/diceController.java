@@ -53,7 +53,7 @@ public class diceController {
     }
 
     @PutMapping("/{id}")
-    public dice updateBook(@RequestBody dice dice, @PathVariable Long id) {
+    public dice updateDice(@RequestBody dice dice, @PathVariable Long id) {
         if (dice.getDiceId() != id) {
           throw new DiceIdMismatchException();
         }
@@ -61,4 +61,12 @@ public class diceController {
           .orElseThrow(DiceNotFoundException::new);
         return diceRepository.save(dice);
     }
+
+    //Create Dice based on user input
+    @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public dice createDice(@RequestBody dice dice) {
+        return diceRepository.save(dice);
+    }
+    
 }
