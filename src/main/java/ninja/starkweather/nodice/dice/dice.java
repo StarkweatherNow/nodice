@@ -44,8 +44,8 @@ public class dice {
         return diceId;
     }
 
-    public void setDiceId(int i){
-        this.diceId = i;
+    public void setDiceId(Long diceId){
+        this.diceId = diceId;
     }
 
     public int getSides() {
