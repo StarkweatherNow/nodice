@@ -45,6 +45,13 @@ public class diceController {
         return diceRepository.save(dice);
     }
 
+    @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public dice createDice(@RequestBody dice dice) {
+        final dice dice = createUserDice();
+        return diceRepository.save(dice);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         diceRepository.findById(id)
@@ -62,11 +69,17 @@ public class diceController {
         return diceRepository.save(dice);
     }
 
-    //Create Dice based on user input
-    @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    public dice createDice(@RequestBody dice dice) {
-        return diceRepository.save(dice);
+    private dice createUserDice(int sides, String name, String border, String font, String texture, int borderColor, int fontColor, int backgroundColor) {
+      final dice dice = new dice();
+      dice.setSides(sides);
+      dice.setValue(0);
+      dice.setName(name);
+      dice.setBorder(border);
+      dice.setFont(font);
+      dice.setTexture(texture);
+      dice.setBorderColor(borderColor);
+      dice.setFontColor(fontColor);
+      dice.setBackgroundColor(backgroundColor);
+      return dice;
     }
-    
 }

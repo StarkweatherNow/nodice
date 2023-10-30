@@ -120,19 +120,4 @@ public class dice {
         this.diceBackgroundColor = diceBackgroundColor;
     }
 
-    public void createNewDice(){
-        dice newDice = new dice();
-        newDice.setDiceId(1);
-        newDice.setName("d6");
-        newDice.setSides(6);
-        newDice.setValue(1);
-        newDice.setBorder("solid");
-        newDice.setFont("arial");
-        newDice.setTexture("none");
-        newDice.setBorderColor(0);
-        newDice.setFontColor(0);
-        newDice.setBackgroundColor(0);
-    }
-
-
 }

@@ -31,7 +31,7 @@
             <div class="col">
                 <!--HTML form to request user input for Java Dice class-->
                 <h1>Create Dice:</h1>
-                <form action="#" th:action="@{/api/dice/create}" th:object="${dice}" method="post">
+                <form action="#" th:action="@{/api/dice}" th:object="${dice}" method="post">
                     <p>Name: <input type="text" th:field="*{name}" /></p>
                     <p>Sides: <input type="text" th:field="*{sides}" /></p>
                     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
