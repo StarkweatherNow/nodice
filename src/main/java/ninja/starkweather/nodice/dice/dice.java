@@ -39,7 +39,7 @@ public class dice {
 
     @Column(nullable = false)
     private int diceBackgroundColor;
-
+    
     public Long getDiceId() {
         return diceId;
     }
